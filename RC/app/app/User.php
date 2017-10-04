@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace dbc;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

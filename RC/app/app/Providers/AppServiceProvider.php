@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace dbc\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
