@@ -1,5 +1,5 @@
 var redis      = require('redis');
-var SerialPort = require("serialport").SerialPort
+var SerialPort = require('serialport');
 
 
 
