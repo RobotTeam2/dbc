@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row align-items-start">
+  <div class="row align-items-start justify-content-center">
     <div class="col-sm ">
       <form method="POST" action="/uart/forword">
         {{ csrf_field() }}
@@ -7,7 +7,7 @@
       </form>
     </div>
   </div>
-  <div class="row align-items-center">
+  <div class="row align-items-center justify-content-center">
     <div class="col">
       <form method="POST" action="/uart/left">
         {{ csrf_field() }}
@@ -27,7 +27,7 @@
       </form>
     </div>
   </div>
-  <div class="row align-items-end">
+  <div class="row align-items-end justify-content-center">
     <div class="col-sm">
       <form method="POST" action="/uart/back">
         {{ csrf_field() }}
