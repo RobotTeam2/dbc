@@ -1,15 +1,6 @@
 <div class="container" style="height:10%;"></div>
 <div class="container">
   <div class="row">
-    <div class="col-lg">
-      <button type="button" class="btn btn-lg btn-block btn-primary" onclick="forward()"><i class="material-icons">fast_forward</i></button>
-    </div>
-  </div>
-</div>
-<div class="container" style="height:5%;"></div>
-<hr/>
-<div class="container">
-  <div class="row">
     <div class="col-sm">
       <button type="button" class="btn btn-lg btn-block btn-success" onclick="up()"><i class="material-icons">keyboard_arrow_up</i></button>
     </div>
