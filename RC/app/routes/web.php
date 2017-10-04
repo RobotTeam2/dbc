@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/uart/forword', 'UartDualBoxCarController@forword');
+Route::post('/uart/back', 'UartDualBoxCarController@back');
+Route::post('/uart/left', 'UartDualBoxCarController@left');
+Route::post('/uart/right', 'UartDualBoxCarController@right');
+Route::post('/uart/stop', 'UartDualBoxCarController@stop');
