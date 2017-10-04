@@ -2,19 +2,6 @@
 <div class="container" style="height:10%;"></div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-4 offset-lg-4">
-      <form>
-        <div class="form-group">
-          <label for="esp-ip-address">ESPボードのIPアドレスを入れてください:</label>
-          <input type="text" class="form-control input-lg" size="30" maxlength="20" id="esp-ip-address" value="127.0.0.1" ></input>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<hr/>
-<div class="container">
-  <div class="row">
     <div class="col-lg-1 offset-lg-5">
       <button type="button" class="btn btn-lg btn-block btn-primary" onclick="forward()"><i class="material-icons">fast_forward</i></button>
     </div>
