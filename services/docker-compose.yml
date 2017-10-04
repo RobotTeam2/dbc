@@ -1,0 +1,10 @@
+version: '3'
+services:
+  wator-laravel:
+    build: dbc-wator
+    network_mode: "host"
+    volumes:
+      - /home/ma/dbc/RC/:/opt/laravel
+    working_dir: "/opt/laravel"
+    command: php artisan serve -vvv --host=127.0.0.1 --port=18080
+    restart: always
