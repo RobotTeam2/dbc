@@ -9,7 +9,7 @@ subscriber.on("message", function(channel, message) {
   console.log('message=<',message,'>');
 });
 
-var serialPort = new SerialPort("/dev/tty.usbmodem1411", {
+var serialPort = new SerialPort("/dev/ttyS0", {
  baudrate: 112500
 });
 
