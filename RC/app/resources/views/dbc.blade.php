@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="row align-items-end justify-content-center">
-    <div class="col-sm">
+    <div class="col-4">
       <form method="POST" action="/uart/back">
         {{ csrf_field() }}
         <button type="submit" class="btn btn-lg btn-success"><i class="material-icons">keyboard_arrow_down</i></button>
