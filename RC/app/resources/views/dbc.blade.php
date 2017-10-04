@@ -2,7 +2,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <button type="button" class="btn btn-lg btn-block btn-success"><i class="material-icons">keyboard_arrow_up</i></button>
+      <form  class="mt-2 mb-2" method="POST" action="/uart/up">
+        {{ csrf_field() }}
+        <button type="submit" class="btn btn-lg btn-block btn-success"><i class="material-icons">keyboard_arrow_up</i></button>
+      </form>
     </div>
   </div>
   <div class="row" style="height:2%;"></div>
