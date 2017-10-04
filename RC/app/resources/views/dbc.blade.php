@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row align-items-start justify-content-center">
-    <div class="col-4">
+    <div class="col-4 justify-content-center">
       <form method="POST" action="/uart/forword">
         {{ csrf_field() }}
         <button type="submit" class="btn btn-lg btn-success"><i class="material-icons">keyboard_arrow_up</i></button>
