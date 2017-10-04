@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row align-items-center justify-content-center">
-    <div class="col-1">
+    <div class="col-2">
       <div class="row">
       <form method="POST" action="/uart/left">
         {{ csrf_field() }}
