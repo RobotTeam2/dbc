@@ -1,7 +1,7 @@
 version: '3'
 services:
-  wator-laravel:
-    build: dbc-wator
+  dbc-laravel:
+    image: arm32v7/php
     network_mode: "host"
     volumes:
       - /home/ma/dbc/RC/:/opt/laravel
