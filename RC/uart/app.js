@@ -15,11 +15,30 @@ files.forEach(function(file) {
 console.log('uartDevice=<',uartDevice,'>');
 
 
+function writeMotor(motor) {
+  serialPort.write(JSON.stringify(servo),function(err) {
+    if (err) {
+      console.log('err=<',err,'>');
+    } else {
+      console.log('message written');
+    }
+  });
+}
 
 var subscriber = redis.createClient(6379, 'localhost'); 
 subscriber.subscribe('/dbc/webui2uart');
 subscriber.on("message", function(channel, message) {
   console.log('message=<',message,'>');
+  if(message === 'forword') {
+    var servo = {sp:50,ff:true,mt:'FL'};
+    writeMotor(servo);
+    servo.mt = 'FR';
+    writeMotor(servo);
+    servo.mt = 'BL';
+    writeMotor(servo);
+    servo.mt = 'BR';
+    writeMotor(servo);
+  }
 });
 
 var serialPort = new SerialPort(uartDevice, {
