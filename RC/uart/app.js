@@ -17,7 +17,7 @@ console.log('uartDevice=<',uartDevice,'>');
 
 function writeMotor(motor) {
   console.log('JSON.stringify(motor)=<',JSON.stringify(motor),'>');
-  serialPort.write(JSON.stringify(motor) + '\r\n',function(err) {
+  serialPort.write(JSON.stringify(motor),function(err) {
     if (err) {
       console.log('err=<',err,'>');
     } else {
@@ -32,15 +32,13 @@ subscriber.on("message", function(channel, message) {
   console.log('message=<',message,'>');
   if(message === 'forword') {
     var motor = {sp:50,ff:true,mt:'FL'};
-    writeMotor(motor);
-/*    
+    writeMotor(motor);    
     motor.mt = 'FR';
     writeMotor(motor);
     motor.mt = 'BL';
     writeMotor(motor);
     motor.mt = 'BR';
     writeMotor(motor);
-*/
   }
   if(message === 'back') {
     var motor = {sp:50,ff:false,mt:'FL'};
