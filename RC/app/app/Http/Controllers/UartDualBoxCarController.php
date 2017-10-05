@@ -37,6 +37,8 @@ class UartDualBoxCarController extends Controller
     //
     public function speed(Request $request) {
         Redis::publish(self::CHANNEL, 'speed');
+        $speed = $request->input('speed');
+        Redis::get(self::KEY,$speed);
         return redirect()->back();
     }
 }
