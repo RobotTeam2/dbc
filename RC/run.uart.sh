@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /home/ma/dbc/RC/uart && nodejs app.js
+cd /home/ma/dbc/RC/uart && nodejs app.js >/tmp/dbc.uart.log
