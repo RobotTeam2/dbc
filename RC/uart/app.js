@@ -33,65 +33,48 @@ subscriber.subscribe('/dbc/webui2uart');
 subscriber.on("message", function(channel, message) {
   console.log('message=<',message,'>');
   if(message === 'forword') {
-    var motor = {sp:50,ff:true,mt:'FL'};
-    writeMotor(motor);
-    motor.mt = 'FR';
-    writeMotor(motor);
-    motor.mt = 'BL';
-    writeMotor(motor);
-    motor.mt = 'BR';
+    var motor = {
+      FL:{sp:50,ff:true},
+      FR:{sp:50,ff:true},
+      BL:{sp:50,ff:true},
+      BR:{sp:50,ff:true},
+    };
     writeMotor(motor);
   }
   if(message === 'back') {
-    var motor = {sp:50,ff:false,mt:'FL'};
-    writeMotor(motor);
-    motor.mt = 'FR';
-    writeMotor(motor);
-    motor.mt = 'BL';
-    writeMotor(motor);
-    motor.mt = 'BR';
+    var motor = {
+      FL:{sp:50,ff:false},
+      FR:{sp:50,ff:false},
+      BL:{sp:50,ff:false},
+      BR:{sp:50,ff:false},
+    };
     writeMotor(motor);
   }
   if(message === 'left') {
-    var motor = {sp:50,ff:false,mt:'FL'};
-    writeMotor(motor);
-    
-    motor.ff = true;
-    motor.mt = 'FR';
-    writeMotor(motor);
-
-    motor.ff = false;
-    motor.mt = 'BL';
-    writeMotor(motor);
-
-    motor.ff = true;
-    motor.mt = 'BR';
+    var motor = {
+      FL:{sp:50,ff:false},
+      FR:{sp:50,ff:true},
+      BL:{sp:50,ff:false},
+      BR:{sp:50,ff:true},
+    };
     writeMotor(motor);
   }
   if(message === 'right') {
-    var motor = {sp:50,ff:true,mt:'FL'};
-    writeMotor(motor);
-    
-    motor.ff = false;
-    motor.mt = 'FR';
-    writeMotor(motor);
-    
-    motor.ff = true;
-    motor.mt = 'BL';
-    writeMotor(motor);
-
-    motor.ff = false;
-    motor.mt = 'BR';
+    var motor = {
+      FL:{sp:50,ff:true},
+      FR:{sp:50,ff:false},
+      BL:{sp:50,ff:true},
+      BR:{sp:50,ff:false},
+    };
     writeMotor(motor);
   }
   if(message === 'stop') {
-    var motor = {sp:255,ff:true,mt:'FL'};
-    writeMotor(motor);
-    motor.mt = 'FR';
-    writeMotor(motor);
-    motor.mt = 'BL';
-    writeMotor(motor);
-    motor.mt = 'BR';
+    var motor = {
+      FL:{sp:255,ff:true},
+      FR:{sp:255,ff:true},
+      BL:{sp:255,ff:true},
+      BR:{sp:255,ff:true},
+    };
     writeMotor(motor);
   }
 });
