@@ -9,6 +9,7 @@ class UartDualBoxCarController extends Controller
 {
     //
     const CHANNEL = '/dbc/webui2uart';
+    const KEY = '/dbc/speed';
     public function forword(Request $request) {
         Redis::publish(self::CHANNEL, 'forword');
         return redirect()->back();
