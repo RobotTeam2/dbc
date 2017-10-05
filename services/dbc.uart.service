@@ -1,0 +1,14 @@
+[Unit]
+Description= dbc uart.
+After=network.target
+
+[Service]
+ExecStart=/home/ma/dbc/RC/run.uart.sh
+ExecStop=/bin/kill ${MAINPID}
+Restart=always
+Type=simple
+User=ma
+Group=dialout
+
+[Install]
+WantedBy=default.target
