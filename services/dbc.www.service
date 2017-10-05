@@ -1,0 +1,14 @@
+[Unit]
+Description= dbc www.
+After=network.target
+
+[Service]
+ExecStart=/home/ma/dbc/RC/run.app.sh
+ExecStop=/bin/kill ${MAINPID}
+Restart=always
+Type=simple
+User=ma
+Group=ma
+
+[Install]
+WantedBy=default.target
