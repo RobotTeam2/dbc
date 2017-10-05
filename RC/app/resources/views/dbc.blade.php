@@ -1,6 +1,16 @@
 <div class="container mt-lg-5">
   <div class="row mt-lg-5 justify-content-center">
     <div class="col-6">
+      <form method="POST" class="justify-content-center" action="/uart/speed">
+        {{ csrf_field() }}
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-lg-5">
+  <div class="row mt-lg-5 justify-content-center">
+    <div class="col-6">
       <div class="row align-items-start justify-content-center">
         <form method="POST" class="justify-content-center" action="/uart/forword">
           {{ csrf_field() }}
