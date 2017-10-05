@@ -11,8 +11,9 @@ class HomeController extends Controller
             $speed = Redis::get(self::KEY);
             return view('welcome', ['speed' => $speed]);
         }catch(\Exception $e){
+            Redis::set(self::KEY,'50');
             var_dump($e->getMessage());
         }
-        return view('welcome', ['speed' => '100']);
+        return view('welcome', ['speed' => '50']);
     }
 }
