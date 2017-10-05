@@ -16,6 +16,7 @@ console.log('uartDevice=<',uartDevice,'>');
 
 
 function writeMotor(motor) {
+  console.log('JSON.stringify(motor)=<',JSON.stringify(motor),'>');
   serialPort.write(JSON.stringify(motor),function(err) {
     if (err) {
       console.log('err=<',err,'>');
