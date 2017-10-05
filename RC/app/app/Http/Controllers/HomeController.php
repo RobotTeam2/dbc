@@ -7,10 +7,12 @@ class HomeController extends Controller
     //
     const KEY = '/dbc/speed';
     public function index() {
-        $speed = Redis::get(self::KEY);
-        if(!isset($speed)) {
-            $speed = 100;
+        try {
+            $speed = Redis::get(self::KEY);
+            return view('home', ['speed' => $speed]);
+        }catch(\Exception e){
+            var_dump($e->getMessage());
         }
-        return view('home', ['speed' => $speed]);
+        return view('home', ['speed' => 100]);
     }
 }
