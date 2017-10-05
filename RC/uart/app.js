@@ -34,46 +34,46 @@ subscriber.on("message", function(channel, message) {
   console.log('message=<',message,'>');
   if(message === 'forword') {
     var motor = {
-      FL:{sp:50,ff:true},
-      FR:{sp:50,ff:true},
-      BL:{sp:50,ff:true},
-      BR:{sp:50,ff:true},
+      FL:{s:50,f:1},
+      FR:{s:50,f:1},
+      BL:{s:50,f:1},
+      BR:{s:50,f:1},
     };
     writeMotor(motor);
   }
   if(message === 'back') {
     var motor = {
-      FL:{sp:50,ff:false},
-      FR:{sp:50,ff:false},
-      BL:{sp:50,ff:false},
-      BR:{sp:50,ff:false},
+      FL:{s:50,f:0},
+      FR:{s:50,f:0},
+      BL:{s:50,f:0},
+      BR:{s:50,f:0},
     };
     writeMotor(motor);
   }
   if(message === 'left') {
     var motor = {
-      FL:{sp:50,ff:false},
-      FR:{sp:50,ff:true},
-      BL:{sp:50,ff:false},
-      BR:{sp:50,ff:true},
+      FL:{s:50,f:0},
+      FR:{s:50,f:1},
+      BL:{s:50,f:0},
+      BR:{s:50,f:1},
     };
     writeMotor(motor);
   }
   if(message === 'right') {
     var motor = {
-      FL:{sp:50,ff:true},
-      FR:{sp:50,ff:false},
-      BL:{sp:50,ff:true},
-      BR:{sp:50,ff:false},
+      FL:{s:50,f:1},
+      FR:{s:50,f:0},
+      BL:{s:50,f:1},
+      BR:{s:50,f:0},
     };
     writeMotor(motor);
   }
   if(message === 'stop') {
     var motor = {
-      FL:{sp:255,ff:true},
-      FR:{sp:255,ff:true},
-      BL:{sp:255,ff:true},
-      BR:{sp:255,ff:true},
+      FL:{s:254,f:1},
+      FR:{s:254,f:1},
+      BL:{s:254,f:1},
+      BR:{s:254,f:1},
     };
     writeMotor(motor);
   }
