@@ -3,6 +3,8 @@
     <div class="col-6">
       <form method="POST" class="justify-content-center" action="/uart/speed">
         {{ csrf_field() }}
+        <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+        <button type="submit" class="btn btn-lg btn-success"><i class="material-icons">keyboard_arrow_up</i></button>
       </form>
     </div>
   </div>
@@ -40,5 +42,13 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $('#ex1').slider({
+    formatter: function(value) {
+      return 'Current value: ' + value;
+    }
+  });
+</script>
 
 
