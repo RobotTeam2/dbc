@@ -16,7 +16,7 @@ console.log('uartDevice=<',uartDevice,'>');
 
 
 function writeMotor(motor) {
-  serialPort.write(JSON.stringify(servo),function(err) {
+  serialPort.write(JSON.stringify(motor),function(err) {
     if (err) {
       console.log('err=<',err,'>');
     } else {
@@ -30,14 +30,14 @@ subscriber.subscribe('/dbc/webui2uart');
 subscriber.on("message", function(channel, message) {
   console.log('message=<',message,'>');
   if(message === 'forword') {
-    var servo = {sp:50,ff:true,mt:'FL'};
-    writeMotor(servo);
-    servo.mt = 'FR';
-    writeMotor(servo);
-    servo.mt = 'BL';
-    writeMotor(servo);
-    servo.mt = 'BR';
-    writeMotor(servo);
+    var motor = {sp:50,ff:true,mt:'FL'};
+    writeMotor(motor);
+    motor.mt = 'FR';
+    writeMotor(motor);
+    motor.mt = 'BL';
+    writeMotor(motor);
+    motor.mt = 'BR';
+    writeMotor(motor);
   }
 });
 
