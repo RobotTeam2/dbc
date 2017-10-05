@@ -7,7 +7,10 @@ class HomeController extends Controller
     //
     const KEY = '/dbc/speed';
     public function index() {
-        Redis::publish(self::CHANNEL, 'forword');
-        return redirect()->back();
+        $speed = Redis::get(self::KEY);
+        if(!isset($speed)) {
+            $speed = 100;
+        }
+        return view('home', ['speed' => $speed]);
     }
 }
