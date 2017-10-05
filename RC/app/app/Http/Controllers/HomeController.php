@@ -13,6 +13,6 @@ class HomeController extends Controller
         }catch(\Exception $e){
             var_dump($e->getMessage());
         }
-        return view('welcome', ['speed' => 100]);
+        return view('welcome', ['speed' => '100']);
     }
 }
