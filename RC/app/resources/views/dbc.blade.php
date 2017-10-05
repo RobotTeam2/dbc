@@ -4,12 +4,14 @@
       <form method="POST" class="justify-content-center" action="/uart/speed">
         {{ csrf_field() }}
         <div class="row">
-          <label class="control-label">base speed</label>
-          <div class="col-6">
+          <div class="col">
+            <label class="control-label">base speed</label>
+          </div>
+          <div class="col">
             <input type="range" name="speed" class="form-control" min="1" max="255"/>
           </div>
-          <div class="col-6">
-          <button type="submit" class="btn btn-lg btn-success"><i class="material-icons">keyboard_arrow_up</i></button>
+          <div class="col">
+            <button type="submit" class="btn btn-lg btn-success"><i class="material-icons">keyboard_arrow_up</i></button>
           </div>
         </div>
       </form>
