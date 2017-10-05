@@ -39,6 +39,58 @@ subscriber.on("message", function(channel, message) {
     motor.mt = 'BR';
     writeMotor(motor);
   }
+  if(message === 'back') {
+    var motor = {sp:50,ff:false,mt:'FL'};
+    writeMotor(motor);
+    motor.mt = 'FR';
+    writeMotor(motor);
+    motor.mt = 'BL';
+    writeMotor(motor);
+    motor.mt = 'BR';
+    writeMotor(motor);
+  }
+  if(message === 'left') {
+    var motor = {sp:50,ff:false,mt:'FL'};
+    writeMotor(motor);
+    
+    motor.ff = true;
+    motor.mt = 'FR';
+    writeMotor(motor);
+
+    motor.ff = false;
+    motor.mt = 'BL';
+    writeMotor(motor);
+
+    motor.ff = true;
+    motor.mt = 'BR';
+    writeMotor(motor);
+  }
+  if(message === 'right') {
+    var motor = {sp:50,ff:true,mt:'FL'};
+    writeMotor(motor);
+    
+    motor.ff = false;
+    motor.mt = 'FR';
+    writeMotor(motor);
+    
+    motor.ff = true;
+    motor.mt = 'BL';
+    writeMotor(motor);
+
+    motor.ff = false;
+    motor.mt = 'BR';
+    writeMotor(motor);
+  }
+  if(message === 'stop') {
+    var motor = {sp:255,ff:true,mt:'FL'};
+    writeMotor(motor);
+    motor.mt = 'FR';
+    writeMotor(motor);
+    motor.mt = 'BL';
+    writeMotor(motor);
+    motor.mt = 'BR';
+    writeMotor(motor);
+  }
 });
 
 var serialPort = new SerialPort(uartDevice, {
