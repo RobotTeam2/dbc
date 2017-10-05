@@ -103,7 +103,7 @@ serialPort.on("open", function () {
 
 serialPort.on('data', function(data) {
   console.log('received data =<',data,'>');
-  console.log('received data.string() =<',data.string(),'>');
+  console.log('received data.toString('utf8') =<',data.toString('utf8'),'>');
   
 });
 
