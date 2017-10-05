@@ -97,7 +97,7 @@ subscriber.on("message", function(channel, message) {
 });
 
 var serialPort = new SerialPort(uartDevice, {
- baudRate: 9600
+ baudRate: 115200
 });
 
 serialPort.on("open", function () {
