@@ -7,7 +7,7 @@
           <span class="input-group-btn">
             <button class="btn btn-primary" type="submit">1-255</button>
           </span>
-          <input type="text" class="form-control" name="speed" placeholder="{{ $speed }}" aria-label="{{ $speed }} ">
+          <input type="text" class="form-control" name="speed" placeholder="{{ $speed }}"  value="{{ $speed }}" />
       </form>
     </div>
   </div>
