@@ -9,10 +9,10 @@ class HomeController extends Controller
     public function index() {
         try {
             $speed = Redis::get(self::KEY);
-            return view('home', ['speed' => $speed]);
+            return view('welcome', ['speed' => $speed]);
         }catch(\Exception $e){
             var_dump($e->getMessage());
         }
-        return view('home', ['speed' => 100]);
+        return view('welcome', ['speed' => 100]);
     }
 }
