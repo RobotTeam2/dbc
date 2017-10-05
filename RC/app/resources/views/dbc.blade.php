@@ -3,7 +3,8 @@
     <div class="col-6">
       <form method="POST" class="justify-content-center" action="/uart/speed">
         {{ csrf_field() }}
-        <input type="range" class="form-control"/>
+        <label class="control-label">base speed</label>
+        <input type="range" name="speed" class="form-control" min="1" max="255"/>
       </form>
     </div>
   </div>
