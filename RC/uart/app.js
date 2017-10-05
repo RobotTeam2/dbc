@@ -24,6 +24,7 @@ function writeMotor(motor) {
       console.log('message written');
     }
   });
+  serialPort.drain();
 }
 
 var subscriber = redis.createClient(6379, 'localhost'); 
