@@ -5,9 +5,9 @@
         {{ csrf_field() }}
         <div class="input-group">
           <span class="input-group-btn">
-            <button class="btn btn-secondary" type="button">Go!</button>
+            <button class="btn btn-primary" type="submit">1-255</button>
           </span>
-          <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+          <input type="text" class="form-control" name="speed" placeholder="{{ $speed }}" aria-label="{{ $speed }} ">
       </form>
     </div>
   </div>
