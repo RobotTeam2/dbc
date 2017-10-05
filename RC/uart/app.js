@@ -1,5 +1,11 @@
 var redis      = require('redis');
 var SerialPort = require('serialport');
+var fs = require('fs');
+
+var files = fs.readdirSync('/dev');
+files.forEach(function(file) {
+  console.log(file);
+});
 
 
 
