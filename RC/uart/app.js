@@ -5,7 +5,10 @@ var fs = require('fs');
 var files = fs.readdirSync('/dev/');
 console.log('files=<',files,'>');
 files.forEach(function(file) {
-  console.log('file=<',file,'>');
+  //console.log('file=<',file,'>');
+  if(file.startsWith('ttyUSB')) {
+    console.log('file=<',file,'>');
+  }
 });
 
 
