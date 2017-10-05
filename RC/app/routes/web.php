@@ -10,11 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/', 'HomeController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::post('/uart/speed', 'UartDualBoxCarController@speed');
 Route::post('/uart/forword', 'UartDualBoxCarController@forword');
 Route::post('/uart/back', 'UartDualBoxCarController@back');
 Route::post('/uart/left', 'UartDualBoxCarController@left');
