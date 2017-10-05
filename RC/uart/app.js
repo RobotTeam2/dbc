@@ -33,12 +33,14 @@ subscriber.on("message", function(channel, message) {
   if(message === 'forword') {
     var motor = {sp:50,ff:true,mt:'FL'};
     writeMotor(motor);
+/*    
     motor.mt = 'FR';
     writeMotor(motor);
     motor.mt = 'BL';
     writeMotor(motor);
     motor.mt = 'BR';
     writeMotor(motor);
+*/
   }
   if(message === 'back') {
     var motor = {sp:50,ff:false,mt:'FL'};
