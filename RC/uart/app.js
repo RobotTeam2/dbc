@@ -28,43 +28,47 @@ function writeMotor(motor) {
   serialPort.drain();
 }
 
+var readClient = redis.createClient(6379, 'localhost'); 
+
+var gBaseMotorSpeed = 50;
+
 var subscriber = redis.createClient(6379, 'localhost'); 
 subscriber.subscribe('/dbc/webui2uart');
 subscriber.on("message", function(channel, message) {
   console.log('message=<',message,'>');
   if(message === 'forword') {
     var motor = {
-      FL:{s:50,f:1},
-      FR:{s:50,f:1},
-      BL:{s:50,f:1},
-      BR:{s:50,f:1},
+      FL:{s:gBaseMotorSpeed,f:1},
+      FR:{s:gBaseMotorSpeed,f:1},
+      BL:{s:gBaseMotorSpeed,f:1},
+      BR:{s:gBaseMotorSpeed,f:1},
     };
     writeMotor(motor);
   }
   if(message === 'back') {
     var motor = {
-      FL:{s:50,f:0},
-      FR:{s:50,f:0},
-      BL:{s:50,f:0},
-      BR:{s:50,f:0},
+      FL:{s:gBaseMotorSpeed,f:0},
+      FR:{s:gBaseMotorSpeed,f:0},
+      BL:{s:gBaseMotorSpeed,f:0},
+      BR:{s:gBaseMotorSpeed,f:0},
     };
     writeMotor(motor);
   }
   if(message === 'left') {
     var motor = {
-      FL:{s:50,f:0},
-      FR:{s:50,f:1},
-      BL:{s:50,f:0},
-      BR:{s:50,f:1},
+      FL:{s:gBaseMotorSpeed,f:0},
+      FR:{s:gBaseMotorSpeed,f:1},
+      BL:{s:gBaseMotorSpeed,f:0},
+      BR:{s:gBaseMotorSpeed,f:1},
     };
     writeMotor(motor);
   }
   if(message === 'right') {
     var motor = {
-      FL:{s:50,f:1},
-      FR:{s:50,f:0},
-      BL:{s:50,f:1},
-      BR:{s:50,f:0},
+      FL:{s:gBaseMotorSpeed,f:1},
+      FR:{s:gBaseMotorSpeed,f:0},
+      BL:{s:gBaseMotorSpeed,f:1},
+      BR:{s:gBaseMotorSpeed,f:0},
     };
     writeMotor(motor);
   }
@@ -77,6 +81,20 @@ subscriber.on("message", function(channel, message) {
     };
     writeMotor(motor);
   }
+  if(message === 'speed') {
+    readClient.get('/dbc/speed',function(err, val) {
+      if(err) {
+         console.log('err=<',err,'>');
+      } else {
+        console.log('val=<',val,'>');
+        var speed = parseInt(val);
+        if(speed > 1 && speed < 256) {
+           gBaseMotorSpeed = 256 - speed;
+        }
+      }
+    });
+  }
+  
 });
 
 var serialPort = new SerialPort(uartDevice, {
