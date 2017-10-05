@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('/', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::post('/uart/speed', 'UartDualBoxCarController@speed');
 Route::post('/uart/forword', 'UartDualBoxCarController@forword');
