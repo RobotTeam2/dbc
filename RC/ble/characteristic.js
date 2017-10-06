@@ -5,9 +5,11 @@ var redis = require("redis");
 
 var BlenoCharacteristic = bleno.Characteristic;
 
+var characterID = '9a10ba1d-cd1c-4f00-9cca-1f3178d5fe8a';
+
 var DBCCharacteristic = function() {
-  EchoCharacteristic.super_.call(this, {
-    uuid: 'ac5636ee-3d36-4afe-9662-ec47fbfe1dd0',
+  DBCCharacteristic.super_.call(this, {
+    uuid: characterID,
     properties: ['read', 'write', 'notify'],
     value: null
   });
@@ -19,7 +21,7 @@ var DBCCharacteristic = function() {
 util.inherits(DBCCharacteristic, BlenoCharacteristic);
 
 DBCCharacteristic.prototype.onReadRequest = function(offset, callback) {
-  console.log('EchoCharacteristic - onReadRequest: value = ' + this._value.toString('hex'));
+  console.log('DBCCharacteristic - onReadRequest: value = ' + this._value.toString('hex'));
 
   callback(this.RESULT_SUCCESS, this._value);
 };
@@ -27,11 +29,11 @@ DBCCharacteristic.prototype.onReadRequest = function(offset, callback) {
 DBCCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   this._value = data;
 
-  //console.log('EchoCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));
-  console.log('EchoCharacteristic - onWriteRequest: value = ' + this._value);
+  //console.log('DBCCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));
+  console.log('DBCCharacteristic - onWriteRequest: value = ' + this._value);
   client.send(this._value, 0, this._value.length, 41234, "localhost");
   if (this._updateValueCallback) {
-    console.log('EchoCharacteristic - onWriteRequest: notifying');
+    console.log('DBCCharacteristic - onWriteRequest: notifying');
 
     this._updateValueCallback(this._value);
   }
@@ -40,13 +42,13 @@ DBCCharacteristic.prototype.onWriteRequest = function(data, offset, withoutRespo
 };
 
 DBCCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
-  console.log('EchoCharacteristic - onSubscribe');
+  console.log('DBCCharacteristic - onSubscribe');
 
   this._updateValueCallback = updateValueCallback;
 };
 
 DBCCharacteristic.prototype.onUnsubscribe = function() {
-  console.log('EchoCharacteristic - onUnsubscribe');
+  console.log('DBCCharacteristic - onUnsubscribe');
 
   this._updateValueCallback = null;
 };
