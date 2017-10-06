@@ -1,12 +1,11 @@
 var util = require('util');
 var bleno = require('bleno');
-var dgram = require('dgram');
-var client = dgram.createSocket('udp4');
+var redis = require("redis");
 
 
 var BlenoCharacteristic = bleno.Characteristic;
 
-var EchoCharacteristic = function() {
+var DBCCharacteristic = function() {
   EchoCharacteristic.super_.call(this, {
     uuid: 'ac5636ee-3d36-4afe-9662-ec47fbfe1dd0',
     properties: ['read', 'write', 'notify'],
@@ -17,15 +16,15 @@ var EchoCharacteristic = function() {
   this._updateValueCallback = null;
 };
 
-util.inherits(EchoCharacteristic, BlenoCharacteristic);
+util.inherits(DBCCharacteristic, BlenoCharacteristic);
 
-EchoCharacteristic.prototype.onReadRequest = function(offset, callback) {
+DBCCharacteristic.prototype.onReadRequest = function(offset, callback) {
   console.log('EchoCharacteristic - onReadRequest: value = ' + this._value.toString('hex'));
 
   callback(this.RESULT_SUCCESS, this._value);
 };
 
-EchoCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
+DBCCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   this._value = data;
 
   //console.log('EchoCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));
@@ -40,16 +39,16 @@ EchoCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResp
   callback(this.RESULT_SUCCESS);
 };
 
-EchoCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
+DBCCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
   console.log('EchoCharacteristic - onSubscribe');
 
   this._updateValueCallback = updateValueCallback;
 };
 
-EchoCharacteristic.prototype.onUnsubscribe = function() {
+DBCCharacteristic.prototype.onUnsubscribe = function() {
   console.log('EchoCharacteristic - onUnsubscribe');
 
   this._updateValueCallback = null;
 };
 
-module.exports = EchoCharacteristic;
+module.exports = DBCCharacteristic;
