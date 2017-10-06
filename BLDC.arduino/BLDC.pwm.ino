@@ -106,7 +106,7 @@ String InputCommand ="";
 
 
 static long stopCounter = 0;
-static long const iStopTimeoutCounter = 100000L;
+static long const iStopTimeoutCounter = 300000L;
 
 #define DUMP_VAR(x)  { \
   Serial.print(__LINE__);\
@@ -135,16 +135,23 @@ static long const iStopTimeoutCounter = 100000L;
 }
 
 void tryConfirmJson() {  
-  StaticJsonBuffer<200> jsonBuffer;
+  StaticJsonBuffer<256> jsonBuffer;
   JsonObject& root = jsonBuffer.parseObject(InputCommand);
   if (root.success()) {
-    int spd = root["sp"];
-    bool front = root["ff"];
-    String motor = root["mt"];
-    CONFIRM_WHEEL(FL);
-    CONFIRM_WHEEL(FR);
-    CONFIRM_WHEEL(BL);
-    CONFIRM_WHEEL(BR);
+    InputCommand = "";
+    for (JsonObject::iterator it=root.begin(); it!=root.end(); ++it) {
+      JsonObject& params = it->value;
+      int spd = params["s"];
+      int front = params["f"];
+      String motor = it->key;
+      DUMP_VAR(motor);
+      DUMP_VAR(spd);
+      DUMP_VAR(front);
+      CONFIRM_WHEEL(FL);
+      CONFIRM_WHEEL(FR);
+      CONFIRM_WHEEL(BL);
+      CONFIRM_WHEEL(BR);
+    }
   }
 }
 
@@ -217,12 +224,11 @@ void loop() {
     } else if(incomingByte =='}') {
       InputCommand += incomingByte;
       tryConfirmJson();
-      InputCommand = "";
     } else {
       InputCommand += incomingByte;
     }
+    if(InputCommand.length() > 256) {
+      InputCommand = "";
+    }
   }
 }
-
-
-
