@@ -1,13 +1,13 @@
 var bleno = require('bleno');
 var BlenoPrimaryService = bleno.PrimaryService;
 var DBCCharacteristic = require('./characteristic');
-console.log('bleno - dbc.rc.4wd');
+console.log('bleno - dbc_rc_4wd');
 var serviceID = '9a10ba1d-cd1c-4f00-9cca-1f3178d5fe8a';
 
 bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state);
   if (state === 'poweredOn') {
-    bleno.startAdvertising('dbc.rc.4wd', [serviceID]);
+    bleno.startAdvertising('dbc_rc_4wd', [serviceID]);
   } else {
     bleno.stopAdvertising();
   }
