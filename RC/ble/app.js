@@ -1,6 +1,6 @@
 var bleno = require('bleno');
 var BlenoPrimaryService = bleno.PrimaryService;
-var EchoCharacteristic = require('./characteristic');
+var DBCCharacteristic = require('./characteristic');
 console.log('bleno - dbc.rc.4wd');
 bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state);
@@ -19,7 +19,7 @@ bleno.on('advertisingStart', function(error) {
       new BlenoPrimaryService({
         uuid: 'ac5636ee-3d36-4afe-9662-ec47fbfe1dd0',
         characteristics: [
-          new EchoCharacteristic()
+          new DBCCharacteristic()
         ]
       })
     ]);
