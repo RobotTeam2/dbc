@@ -12,6 +12,9 @@ files.forEach(function(file) {
     uartDevice = '/dev/' +file;
   }
 });
+if(!uartDevice) {
+  uartDevice = '/dev/ttyS1';
+}
 console.log('uartDevice=<',uartDevice,'>');
 
 
