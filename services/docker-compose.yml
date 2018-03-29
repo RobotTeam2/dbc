@@ -1,10 +1,10 @@
 version: '2'
 services:
   dbc-laravel:
-    image: arm32v7/php
+    image: php
     network_mode: "host"
     volumes:
-      - /home/ma/dbc/RC/:/opt/laravel
+      - ../RC/:/opt/laravel
     working_dir: "/opt/laravel"
     command: php artisan serve -vvv --host=127.0.0.1 --port=18080
     restart: always
