@@ -3,6 +3,9 @@ var bleno = require('bleno');
 var redis = require("redis");
 
 
+var publisher  = redis.createClient();
+var channel = 'msg.ble.2.uart';
+
 var BlenoCharacteristic = bleno.Characteristic;
 
 var characterID = '9a10ba1d-cd1c-4f00-9cca-1f3178d5fe8a';
@@ -31,7 +34,7 @@ DBCCharacteristic.prototype.onWriteRequest = function(data, offset, withoutRespo
 
   //console.log('DBCCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));
   console.log('DBCCharacteristic - onWriteRequest: value = ' + this._value);
-  client.send(this._value, 0, this._value.length, 41234, "localhost");
+  publisher.publish(channel, this._value);
   if (this._updateValueCallback) {
     console.log('DBCCharacteristic - onWriteRequest: notifying');
 
