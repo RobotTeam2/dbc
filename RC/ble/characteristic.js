@@ -33,8 +33,8 @@ DBCCharacteristic.prototype.onWriteRequest = function(data, offset, withoutRespo
   this._value = data;
 
   //console.log('DBCCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));
-  console.log('DBCCharacteristic - onWriteRequest: value=<',this._value,'>');
-  publisher.publish(channel, this._value);
+  console.log('DBCCharacteristic - onWriteRequest: value=<',this._value.toString('utf8'),'>');
+  publisher.publish(channel, this._value).toString('utf8');
   if (this._updateValueCallback) {
     console.log('DBCCharacteristic - onWriteRequest: notifying');
 
