@@ -1,0 +1,14 @@
+[Unit]
+Description= dbc ble.
+After=network.target
+
+[Service]
+ExecStart=/home/ma/dbc/RC/run.ble.sh
+ExecStop=/bin/kill ${MAINPID}
+Restart=always
+Type=simple
+User=ma
+Group=dialout
+
+[Install]
+WantedBy=default.target
