@@ -85,9 +85,9 @@ subscriber.on("message", function(channel, message) {
     writeMotor(motor);
   }
   if(message.startsWith('speed:=<')) {
-    var speed = parseInt(message.replace('speed:=<').replace('>'));
-    console.log('speed=<',speed,'>');
-    readClient.set('/dbc/speed',);
+    var speedSpr = message.replace('speed:=<').replace('>');
+    console.log('speedSpr=<',speedSpr,'>');
+    readClient.set('/dbc/speed',speedSpr);
     readClient.get('/dbc/speed',function(err, val) {
       if(err) {
          console.log('err=<',err,'>');
