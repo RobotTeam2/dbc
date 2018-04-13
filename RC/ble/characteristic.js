@@ -30,6 +30,8 @@ DBCCharacteristic.prototype.onReadRequest = function(offset, callback) {
 };
 
 DBCCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
+  console.log('DBCCharacteristic - onWriteRequest: value=<',data,'>');
+  console.log('DBCCharacteristic - onWriteRequest: offset=<',offset,'>');
   this._value = data;
 
   //console.log('DBCCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));
