@@ -3,7 +3,7 @@ Description= dbc ble.
 After=network.target
 
 [Service]
-ExecStart=/home/ma/dbc/RC/run.ble.sh
+ExecStart=/home/pi/dbc/RC/ble/run.sh
 ExecStop=/bin/kill ${MAINPID}
 Restart=always
 Type=simple
