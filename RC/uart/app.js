@@ -84,8 +84,8 @@ subscriber.on("message", function(channel, message) {
     };
     writeMotor(motor);
   }
-  if(message.startsWith('speed_')) {
-    var speedSpr = message.replace('speed_');
+  if(message.startsWith('speed:=<')) {
+    var speedSpr = message.replace('speed:=<','').replace('>','');
     console.log('speedSpr=<',speedSpr,'>');
     readClient.set('/dbc/speed',speedSpr);
     readClient.get('/dbc/speed',function(err, val) {
