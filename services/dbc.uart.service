@@ -3,7 +3,7 @@ Description= dbc uart.
 After=network.target
 
 [Service]
-ExecStart=/home/ma/dbc/RC/run.uart.sh
+ExecStart=/home/pi/dbc/RC/run.uart.sh
 ExecStop=/bin/kill ${MAINPID}
 Restart=always
 Type=simple
